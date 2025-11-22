@@ -1,0 +1,27 @@
+name: Multiline commands with env variables.
+
+on: push
+
+jobs:
+
+docker:
+ env:
+    CONTAINER_REGISTRY:
+    DOCKER_USERNAME:
+    DOCKER_IMAGE:
+ run-on: ubuntu-latest
+ steps:
+ ############################# using job level env variables ########################
+ - name: create a docker image & tag.
+   run: echo docker build -t $CONTAINER_REGISTRY/$DOCKER_USERNAME/DOCKER_IMAGE:latest
+
+ - name: Docker Login
+   env: 
+     DOCKER_PASSWORD:
+   run: echo docker login --username=$
+
+ 
+  
+ - name: login to docker hub 
+ - name: push the docker image 
+ - name: run the docker image
