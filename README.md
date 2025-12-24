@@ -1,9 +1,9 @@
 # GithubActions
 
 1) Get the run ID of the latest run:
-
-run_id=$(curl -s -H "Authorization: token YOUR_TOKEN" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/{owner}/lab2/actions/runs?per_page=1" | jq '.workflow_runs[0].id')
-
+```yaml
+  run_id=$(curl -s -H "Authorization: token YOUR_TOKEN" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/{owner}/lab2/actions/runs?per_page=1" | jq '.workflow_runs[0].id')
+```
 2) Get the job ID of the 'job2':
 
    job_id=$(curl -s -H "Authorization: token YOUR_TOKEN" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/{owner}/lab2/actions/runs/${run_id}/jobs" | jq '.jobs[] | select(.name == "job2") | .id')
